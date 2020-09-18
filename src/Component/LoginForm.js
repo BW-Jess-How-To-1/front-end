@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import axiosWithAuth from '../Auth/axiosWithAuth';
 import styled from 'styled-components';
 
 const FormDiv = styled.form`
@@ -17,14 +18,14 @@ const FormDiv = styled.form`
 const LoginForm = (props) => {
 
     const [err, setErr] = useState();
-    const [formData, setFormData] = useState({
+    const [formState, setFormState] = useState({
         username: '',
         password: ''
     })
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
+        setFormState({
+            ...formState,
             [e.target.name]: e.target.value,
         })
         console.log(e.target.value)
@@ -32,11 +33,13 @@ const LoginForm = (props) => {
     
     const handleSubmit = e =>{
         e.preventDefault()
-        console.log(formData)
-        axios
-        .post( 'https://how-to-app-backend-api.herokuapp.com/api/login', formData)
-        .then( response => {
-            console.log(response)
+        console.log(formState)
+        axiosWithAuth()
+        .post( 'https://how-to-app-backend-api.herokuapp.com/api/login', formState)
+        .then( res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.token);
+            props.history.push('/Users');
         })
         .catch(err=>{
             setErr(err.response.data)
@@ -52,7 +55,7 @@ const LoginForm = (props) => {
         <label>Username:
             <input
                 type='text'
-                value={formData.username}
+                value={formState.username}
                 name='username'
                 placeholder='Enter Username'
                 maxLength='30'
@@ -62,7 +65,7 @@ const LoginForm = (props) => {
         <label>Password:
             <input
                 type='password'
-                value={formData.password}
+                value={formState.password}
                 name='password'
                 placeholder='Enter Password'
                 maxLength='20'
