@@ -7,15 +7,16 @@ import LoginForm from './LoginForm';
 const FormBox = () => (
   <Tabs>
     <TabList>
-      <Tab>Register</Tab>
       <Tab>Log In</Tab>
+      <Tab>Register</Tab>
     </TabList>
 
     <TabPanel>
-      <RegisterForm/>
+      <LoginForm/>
     </TabPanel>
     <TabPanel>
-      <LoginForm/>
+      <RegisterForm/>
+      
     </TabPanel>
   </Tabs>
 );
