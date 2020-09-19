@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState , useEffect } from 'react';
 // import axios from 'axios';
 import axiosWithAuth from '../Auth/axiosWithAuth';
 import styled from 'styled-components';
+import * as yup from 'yup';
 
 const FormDiv = styled.form`
     display: flex;
@@ -14,14 +15,48 @@ const FormDiv = styled.form`
 `;
 
 
+const formSchema = yup.object().shape({
+    username: yup.string()
+    .max(15, "Username must be 15 characters or less")
+    .required("* Username is required"),
+    password: yup.string()
+    .required("* Password is required")
+});
+
 
 const LoginForm = (props) => {
 
-    const [err, setErr] = useState();
+    const [errorState, setErrorState] = useState({
+        username: "",
+        password: ""
+    });
+
+
     const [formState, setFormState] = useState({
         username: '',
         password: ''
     })
+
+
+    const validate = e => {
+        let value =
+          e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        yup
+          .reach(formSchema, e.target.name)
+          .validate(value)
+          .then(valid => {
+            setErrorState({
+              ...errorState,
+              [e.target.name]: ""
+            });
+          })
+          .catch(err => {
+            setErrorState({
+              ...errorState,
+              [e.target.name]: err.errors[0]
+            });
+        });
+    };
 
     const handleChange = (e) => {
         setFormState({
@@ -42,7 +77,7 @@ const LoginForm = (props) => {
             props.history.push('/Users');
         })
         .catch(err=>{
-            setErr(err.response.data)
+            setErrorState(err.response.data)
         })
     }
 
@@ -62,6 +97,7 @@ const LoginForm = (props) => {
                 onChange = {handleChange}
             />
         </label>  
+        {errorState.username.length > 0 ? <p>{errorState.username}</p> : null}
         <label>Password:
             <input
                 type='password'
@@ -72,6 +108,7 @@ const LoginForm = (props) => {
                 onChange = {handleChange}
             />
         </label> 
+        {errorState.password.length > 0 ? <p>{errorState.password}</p> : null }
         <button className='submit' >Submit</button>
     </FormDiv>
     )
