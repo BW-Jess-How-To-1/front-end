@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import axios from 'axios';
 import axiosWithAuth from '../Auth/axiosWithAuth';
 import styled from 'styled-components';
-import * as yup from 'yup';
+// import * as yup from 'yup';
 
 const FormDiv = styled.form`
 	display: flex;
@@ -13,13 +13,13 @@ const FormDiv = styled.form`
 	background: #a64949;
 	width: 80%;
 `;
-const formSchema = yup.object().shape({
-	username: yup
-		.string()
-		.max(15, 'Username must be 15 characters or less')
-		.required('* Username is required'),
-	password: yup.string().required('* Password is required'),
-});
+// const formSchema = yup.object().shape({
+// 	username: yup
+// 		.string()
+// 		.max(15, 'Username must be 15 characters or less')
+// 		.required('* Username is required'),
+// 	password: yup.string().required('* Password is required'),
+// });
 
 const LoginForm = (props) => {
 	const [errorState, setErrorState] = useState({
