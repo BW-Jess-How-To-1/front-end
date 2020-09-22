@@ -40,6 +40,7 @@ const RegisterForm = () => {
                 setFormState({username: '', password: ''})
 			})
 			.catch((err) => {
+                console.log(errorState)
 				setErrorState(err.response.data);
 			});
 	};
