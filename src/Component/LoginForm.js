@@ -68,7 +68,7 @@ const LoginForm = (props) => {
 			.then((res) => {
 				console.log(res);
 				localStorage.setItem('token', res.data.token);
-				props.history.push('/Users');
+				setFormState({username: '', password: ''})
 			})
 			.catch((err) => {
 				setErrorState(err.response.data);

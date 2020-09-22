@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const FormDiv = styled.form`
@@ -12,21 +13,58 @@ const FormDiv = styled.form`
 `;
 
 const RegisterForm = () => {
+    const [errorState, setErrorState] = useState({
+		username: '',
+		password: '',
+	});
+
+	const [formState, setFormState] = useState({
+		username: '',
+		password: '',
+	});
+
+    const handleChange = (e) => {
+		setFormState({
+			...formState,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(formState);
+		axios
+			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState)
+			.then((res) => {
+                console.log(res);
+                setFormState({username: '', password: ''})
+			})
+			.catch((err) => {
+				setErrorState(err.response.data);
+			});
+	};
+
     return (
-        <FormDiv>
+        <FormDiv onSubmit={handleSubmit}>
         <p>Let's get you signed up!</p>
         <label>Username:
             <input
                 type='text'
+                name='username'
+                value={formState.username}
                 placeholder='Create a Username'
                 maxLength='30'
+                onChange={handleChange}
             />
         </label>  
         <label>Password:
             <input
                 type='password'
+                name='password'
+                value={formState.password}
                 placeholder='Create a Password'
                 maxLength='20'
+                onChange={handleChange}
             />
         </label> 
         <button className='submit' >Submit</button>
