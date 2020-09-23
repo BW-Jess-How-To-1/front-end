@@ -3,34 +3,32 @@ import axios from "axios";
 import TutorialCard from './TutorialCard';
 import styled from "styled-components";
 
+const Container = styled.div`
+transition: transform 0.2s ease-in;
+border-radius: 30px;
+background-size: contain;
+background-color: grey;
+color: #f5b942;
+width: 40%;
+margin: 0 auto;
+align-content: center;
+max-height: 350px;
+display: flex;
+opacity: .8;
+justify-content: space-around;
+margin-bottom: 25px;
+box-shadow: 0px 6px 10px -2px black;
+&:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: #a64949;
+}
+
+`;
+
 
 export default function Tutorials() {
     const [tutorials, setTutorials] = useState([]);
 
-    const Container = styled.div`
-        transition: transform 0.2s ease-in;
-        border-radius: 30px;
-        background-size: contain;
-        background-color: grey;
-        color: #f5b942;
-        width: 40%;
-        margin: 0 auto;
-        align-content: center;
-        max-height: 350px;
-        display: flex;
-        opacity: .8;
-        justify-content: space-around;
-        margin-bottom: 25px;
-        box-shadow: 0px 6px 10px -2px black;
-        &:hover {
-            transform: translateY(-5px) scale(1.1);
-            background-color: #a64949;
-        }
-    
-    `;
-
-
-    
     useEffect(() => {
         axios
         .get('https://how-to-app-backend-api.herokuapp.com/api/tutorials')
