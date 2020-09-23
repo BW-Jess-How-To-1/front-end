@@ -1,23 +1,24 @@
 import React from 'react';
 import Title from './Component/Header';
-import Tutorials from './Component/Tutorial';
 import './App.css';
 import FormBox from './Component/FormBox';
-
-import NavBar from './Component/NavBar';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ProtectedRoute from './Component/ProtectedRoute';
+import CreatorDashboard from './Component/CreatorDashboard';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-          <NavBar />
-          <Title/>
-          <FormBox/>
-          <Tutorials />
-      </div>
-    </Router>
-  );
+	return (
+		<div className='App'>
+			<Title/>
+			<Switch>
+			<Route exact path='/' component={FormBox}/>
+
+			<ProtectedRoute path='/creatorDashboard'>
+				<CreatorDashboard />
+			</ProtectedRoute>
+			</Switch>
+		</div>
+	);
 }
 
 export default App;
