@@ -68,7 +68,7 @@ const LoginForm = (props) => {
 			.then((res) => {
 				console.log(res);
 				localStorage.setItem('token', res.data.token);
-				setFormState({username: '', password: ''})
+				setFormState({ username: '', password: '' });
 			})
 			.catch((err) => {
 				setErrorState(err.response.data);
@@ -89,7 +89,7 @@ const LoginForm = (props) => {
 					onChange={handleChange}
 				/>
 			</label>
-			{errorState.username.length > 0 ? <p>{errorState.username}</p> : null}
+			{/* {errorState.username.length > 0 ? <p>{errorState.username}</p> : null} */}
 			<label>
 				Password:
 				<input
@@ -101,7 +101,7 @@ const LoginForm = (props) => {
 					onChange={handleChange}
 				/>
 			</label>
-			{errorState.password.length > 0 ? <p>{errorState.password}</p> : null}
+			{/* {errorState.password.length > 0 ? <p>{errorState.password}</p> : null} */}
 			<button className='submit'>Submit</button>
 		</FormDiv>
 	);
