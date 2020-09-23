@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import axios from 'axios';
 import axiosWithAuth from '../Auth/axiosWithAuth';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 // import * as yup from 'yup';
 
 const FormDiv = styled.form`
@@ -53,11 +54,11 @@ const LoginForm = (props) => {
 	// };
 
 	const handleChange = (e) => {
+
 		setFormState({
 			...formState,
 			[e.target.name]: e.target.value,
 		});
-		console.log(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
@@ -69,9 +70,11 @@ const LoginForm = (props) => {
 				console.log(res);
 				localStorage.setItem('token', res.data.token);
 				setFormState({ username: '', password: '' });
+				props.history.push('/creatorDashboard');
 			})
 			.catch((err) => {
-				setErrorState(err.response.data);
+				console.log(errorState);
+				setErrorState(err.response);
 			});
 	};
 
@@ -107,4 +110,4 @@ const LoginForm = (props) => {
 	);
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);
