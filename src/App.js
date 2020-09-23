@@ -5,6 +5,7 @@ import FormBox from './Component/FormBox';
 import ProtectedRoute from './Component/ProtectedRoute';
 import CreatorDashboard from './Component/CreatorDashboard';
 import { Route, Switch } from 'react-router-dom';
+import PostForm from './Component/PostForm';
 
 function App() {
 	return (
@@ -12,7 +13,7 @@ function App() {
 			<Title/>
 			<Switch>
 			<Route exact path='/' component={FormBox}/>
-
+			<Route exact path="/post" component={PostForm} />
 			<ProtectedRoute path='/creatorDashboard'>
 				<CreatorDashboard />
 			</ProtectedRoute>

@@ -1,5 +1,6 @@
-import React from 'react'
-import Tutorials from './Tutorial'
+import React from 'react';
+import Tutorials from './Tutorial';
+import NavBar from './NavBar';
 
 const CreatorDashboard = () => {
 
@@ -7,6 +8,7 @@ const CreatorDashboard = () => {
     <div>
       <h1>Welcome back</h1>
       <h3>Tutorials</h3>
+      <NavBar />
       <Tutorials />
     </div>
   )

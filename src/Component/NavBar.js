@@ -10,6 +10,9 @@ const NavBar = () => {
             HOW TO
           </Link>
           <div className='menu'>
+            <NavLink exact to='/post' className='menu-links' activeClassName='active' >
+              Post
+            </NavLink>
             <NavLink exact to ='/features' className='menu-links' activeClassName='active'>
               Features
             </NavLink>
