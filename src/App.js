@@ -13,7 +13,8 @@ function App() {
 		<div className='App'>
 			<NavBar />
 			<Switch>
-			<Route exact path='/' component={FormBox}/>
+			<Route exact path='/' component={Title}/>
+      <Route path='/account' component={FormBox}/>
 
 			<ProtectedRoute path='/creatorDashboard'>
 				<CreatorDashboard />
