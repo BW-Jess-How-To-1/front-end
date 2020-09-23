@@ -12,4 +12,4 @@ const CreatorDashboard = () => {
   )
 }
 
-export default CreatorDashboard
+export default CreatorDashboard;
