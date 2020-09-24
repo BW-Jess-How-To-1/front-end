@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
 import axiosWithAuth from '../Auth/axiosWithAuth';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
 const FormDiv = styled.form`
 	display: flex;
@@ -14,13 +13,13 @@ const FormDiv = styled.form`
 	background: #a64949;
 	width: 80%;
 `;
-// const formSchema = yup.object().shape({
-// 	username: yup
-// 		.string()
-// 		.max(15, 'Username must be 15 characters or less')
-// 		.required('* Username is required'),
-// 	password: yup.string().required('* Password is required'),
-// });
+const formSchema = yup.object().shape({
+	username: yup
+		.string()
+		.max(15, 'Username must be 15 characters or less')
+		.required('* Username is required'),
+	password: yup.string().required('* Password is required'),
+});
 
 const LoginForm = (props) => {
 	const [errorState, setErrorState] = useState({
@@ -33,32 +32,32 @@ const LoginForm = (props) => {
 		password: '',
 	});
 
-	// const validate = (e) => {
-	// 	let value =
-	// 		e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-	// 	yup
-	// 		.reach(formSchema, e.target.name)
-	// 		.validate(value)
-	// 		.then((valid) => {
-	// 			setErrorState({
-	// 				...errorState,
-	// 				[e.target.name]: '',
-	// 			});
-	// 		})
-	// 		.catch((err) => {
-	// 			setErrorState({
-	// 				...errorState,
-	// 				[e.target.name]: err.errors[0],
-	// 			});
-	// 		});
-	// };
+	const validate = (e) => {
+		let value =
+			e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+		yup
+			.reach(formSchema, e.target.name)
+			.validate(value)
+			.then((valid) => {
+				setErrorState({
+					...errorState,
+					[e.target.name]: '',
+				});
+			})
+			.catch((err) => {
+				setErrorState({
+					...errorState,
+					[e.target.name]: err.errors[0],
+				});
+			});
+	};
 
 	const handleChange = (e) => {
-
-		setFormState({
-			...formState,
-			[e.target.name]: e.target.value,
-		});
+		e.persist();
+		validate(e);
+		let value =
+		  e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		setFormState({ ...formState, [e.target.name]: value });
 	};
 
 	const handleSubmit = (e) => {
@@ -92,7 +91,7 @@ const LoginForm = (props) => {
 					onChange={handleChange}
 				/>
 			</label>
-			{/* {errorState.username.length > 0 ? <p>{errorState.username}</p> : null} */}
+			{errorState.username.length > 0 ? <p>{errorState.username}</p> : null}
 			<label>
 				Password:
 				<input
@@ -104,7 +103,7 @@ const LoginForm = (props) => {
 					onChange={handleChange}
 				/>
 			</label>
-			{/* {errorState.password.length > 0 ? <p>{errorState.password}</p> : null} */}
+			{errorState.password.length > 0 ? <p>{errorState.password}</p> : null}
 			<button className='submit'>Submit</button>
 		</FormDiv>
 	);
