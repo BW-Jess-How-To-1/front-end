@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import NavBar from './NavBar';
 
 const Head = styled.div`
     font-family: 'Handlee', cursive;
@@ -11,8 +12,9 @@ const Title = () => {
         <Head>
             <h1>How To..</h1>
             <p>This is where some clever description goes.</p>
+            <NavBar />
         </Head>
-    )
+        )
 }
 
 export default Title;

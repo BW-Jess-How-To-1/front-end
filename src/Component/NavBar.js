@@ -10,10 +10,10 @@ const NavBar = () => {
             HOW TO
           </Link>
           <div className='menu'>
-            <NavLink exact to='/post' className='menu-links' activeClassName='active' >
-              Post
+            <NavLink exact to="/creators" className='menu-links' activeClassName='active' >
+              Tutorials
             </NavLink>
-            <NavLink exact to ='/features' className='menu-links' activeClassName='active'>
+            <NavLink exact to='/features' className='menu-links' activeClassName='active'>
               Features
             </NavLink>
             <NavLink exact to='/team' className='menu-links' activeClassName='active'>

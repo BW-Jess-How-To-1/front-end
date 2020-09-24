@@ -1,6 +1,6 @@
 import React from 'react';
+import PostForm from './PostForm';
 import Tutorials from './Tutorial';
-import NavBar from './NavBar';
 
 const CreatorDashboard = () => {
 
@@ -8,7 +8,7 @@ const CreatorDashboard = () => {
     <div>
       <h1>Welcome back</h1>
       <h3>Tutorials</h3>
-      <NavBar />
+      <PostForm />
       <Tutorials />
     </div>
   )
