@@ -7,11 +7,18 @@ import CreatorDashboard from './Component/CreatorDashboard';
 import { Route, Switch } from 'react-router-dom';
 
 import NavBar from './Component/NavBar';
+import NavBarLoggedIn from './Component/NavBarLoggedIn';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('token') ? (
+    <NavBarLoggedIn />
+  ) : (
+    <NavBar />
+  );
+
 	return (
 		<div className='App'>
-			<NavBar />
+			{isLoggedIn}
 			<Switch>
 			<Route exact path='/' component={Title}/>
       <Route path='/account' component={FormBox}/>

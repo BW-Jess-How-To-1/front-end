@@ -1,10 +1,8 @@
 import React from 'react';
 import '../App.css';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-function NavBarLoggedIn() {
-  const location = useLocation();
-
+const NavBarLoggedIn = () => {
   return (
     <>
       <div className='nav-wrapper'>
