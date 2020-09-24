@@ -111,6 +111,8 @@ body{
   border-bottom-right-radius: 10px;
 }
 
+/* nav bar styling */
+
 nav {
   display: flex;
   justify-content: space-between;
