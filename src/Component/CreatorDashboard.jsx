@@ -1,15 +1,14 @@
-import React from 'react'
-import Tutorials from './Tutorial'
+import React from 'react';
+import Tutorials from './Tutorials';
 
-const CreatorDashboard = () => {
-
-  return (
-    <div>
-      <h1>Welcome back</h1>
-      <h3>Tutorials</h3>
-      <Tutorials />
-    </div>
-  )
-}
+const CreatorDashboard = ({ setTutorials, tutorials }) => {
+	return (
+		<div>
+			<h1>Welcome back</h1>
+			<h3>Tutorials</h3>
+			<Tutorials setTutorials={setTutorials} tutorials={tutorials} />
+		</div>
+	);
+};
 
 export default CreatorDashboard;
