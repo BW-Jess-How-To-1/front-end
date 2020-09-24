@@ -17,7 +17,7 @@ function App() {
 				<Route exact path='/' component={FormBox} />
 
 				<ProtectedRoute path='/creatorDashboard'>
-					<SearchBar tutorials={tutorials} />
+					<SearchBar tutorials={tutorials} setTutorials={setTutorials} />
 					<CreatorDashboard setTutorials={setTutorials} tutorials={tutorials} />
 				</ProtectedRoute>
 			</Switch>
