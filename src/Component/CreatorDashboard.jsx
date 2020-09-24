@@ -1,31 +1,14 @@
-import React from 'react'
-<<<<<<< HEAD
+import React from 'react';
+import Tutorials from './Tutorials';
 
-const CreatorDashboard = () => {
-  return (
-    <div>
-      
-useEffect(() => {
-  
-}, [])
+const CreatorDashboard = ({ setTutorials, tutorials }) => {
+	return (
+		<div>
+			<h1>Welcome back</h1>
+			<h3>Tutorials</h3>
+			<Tutorials setTutorials={setTutorials} tutorials={tutorials} />
+		</div>
+	);
+};
 
-=======
-import Tutorials from './Tutorial'
-
-const CreatorDashboard = () => {
-
-  return (
-    <div>
-      <h1>Welcome back</h1>
-      <h3>Tutorials</h3>
-      <Tutorials />
->>>>>>> 05c1b3d33c2bbedaa312470bced256f8fe7c4219
-    </div>
-  )
-}
-
-<<<<<<< HEAD
-export default CreatorDashboard
-=======
 export default CreatorDashboard;
->>>>>>> 05c1b3d33c2bbedaa312470bced256f8fe7c4219

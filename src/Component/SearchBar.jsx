@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ tutorials }) => {
 	const [searchState, setSearchState] = useState({ search: '' });
 
 	const handleSearch = (e) => {
+		console.log('handleSearch called.');
 		e.preventDefault();
+		tutorials.filter((card) => {
+			return card.includes(searchState);
+		});
 	};
 
 	const handleChange = (e) => {
