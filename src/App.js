@@ -21,7 +21,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			{isLoggedIn}
+        {isLoggedIn}
 			<Switch>
 			<Route exact path='/' component={Title}/>
       <Route path='/account' component={FormBox}/>
