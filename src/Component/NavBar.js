@@ -16,11 +16,8 @@ const NavBar = () => {
             <NavLink exact to='/team' className='menu-links' activeClassName='active'>
               Team
             </NavLink>
-            <NavLink exact to='/login' className='menu-links' activeClassName='active'>
-              Login
-            </NavLink>
-            <NavLink exact to='/signup' className='menu-links' activeClassName='active'>
-              Sign Up
+            <NavLink exact to='/account' className='menu-links' activeClassName='active'>
+              Account
             </NavLink>
           </div>
         </nav>
