@@ -7,14 +7,18 @@ import CreatorDashboard from './Component/CreatorDashboard';
 import { Route, Switch } from 'react-router-dom';
 import SearchBar from './Component/SearchBar';
 
+import NavBar from './Component/NavBar';
+
 function App() {
 	const [tutorials, setTutorials] = useState([]);
 
 	return (
 		<div className='App'>
 			<Title />
+			<NavBar />
 			<Switch>
-				<Route exact path='/' component={FormBox} />
+			<Route exact path='/' component={Title}/>
+      <Route path='/account' component={FormBox}/>
 
 				<ProtectedRoute path='/creatorDashboard'>
 					<SearchBar tutorials={tutorials} setTutorials={setTutorials} />
