@@ -14,11 +14,10 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Title />
 			<NavBar />
 			<Switch>
-			<Route exact path='/' component={Title}/>
-      <Route path='/account' component={FormBox}/>
+				<Route exact path='/' component={Title} />
+				<Route path='/account' component={FormBox} />
 
 				<ProtectedRoute path='/creatorDashboard'>
 					<SearchBar tutorials={tutorials} setTutorials={setTutorials} />

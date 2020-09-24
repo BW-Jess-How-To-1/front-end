@@ -47,6 +47,7 @@ export default function Tutorials({ setTutorials, tutorials }) {
 							materials={each.materials}
 							directions={each.directions}
 							likes={each.likes}
+							tutorials={tutorials}
 						/>
 					</Container>
 				);
