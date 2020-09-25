@@ -26,8 +26,11 @@ const Container = styled.div`
 
 export default function Tutorials({ setTutorials, tutorials }) {
 	useEffect(() => {
+		const config = {
+			headers: {'Access-Control-Allow-Origin': '*'}
+			};
 		axiosWithAuth()
-			.get('https://how-to-app-backend-api.herokuapp.com/api/tutorials')
+			.get('https://how-to-app-backend-api.herokuapp.com/api/tutorials', config)
 			.then((res) => {
 				//  console.log(res.data);
 				setTutorials(res.data);
