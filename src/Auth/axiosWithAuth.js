@@ -5,7 +5,8 @@ export default function () {
   return axios.create({
     headers: {
       Authorization: token,
-      credentials: "include"
+      credentials: "include",
+      'Access-Control-Allow-Origin': '*'
     }
   })
 }
