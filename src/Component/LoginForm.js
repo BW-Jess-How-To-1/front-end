@@ -63,6 +63,7 @@ const LoginForm = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formState);
+		
 		axiosWithAuth()
 			.post('https://how-to-app-backend-api.herokuapp.com/api/login', formState)
 			.then((res) => {

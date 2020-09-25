@@ -45,6 +45,12 @@ export default function Tutorials({ setTutorials, tutorials }) {
 	const [editing, setEditing] = useState(false);
 
 	useEffect(() => {
+// 		const config = {
+// 			headers: {
+// 				'Access-Control-Allow-Origin': '*',
+// 				'credentials': 'true"
+// 				}
+// 			};
 		axiosWithAuth()
 			.get('https://how-to-app-backend-api.herokuapp.com/api/tutorials')
 			.then((res) => {

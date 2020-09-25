@@ -68,11 +68,15 @@ const RegisterForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formState);
-		axiosWithAuth()
-			.post(
-				'https://how-to-app-backend-api.herokuapp.com/api/register',
-				formState
-			)
+
+		const config = {
+			headers: {
+				'Access-Control-Allow-Origin': 'https://how-to-1.netlify.app',
+				'credentials': 'true"
+				}
+			};
+		axios
+			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState, config)
 			.then((res) => {
 				console.log('res: ', res);
 				setFormState({ username: '', password: '' });
