@@ -8,7 +8,7 @@ const FormDiv = styled.form`
     border-radius: 10px;
     color: white;
     flex-direction: column;
-    background: #a64949;
+    background: lightskyblue;
     width: 80%;
 `;
 

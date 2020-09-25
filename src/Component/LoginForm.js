@@ -11,7 +11,7 @@ const FormDiv = styled.form`
 	color: white;
 	margin: 0 auto;
 	flex-direction: column;
-	background: #a64949;
+	background: lightskyblue;
 	width: 80%;
 `;
 // const formSchema = yup.object().shape({

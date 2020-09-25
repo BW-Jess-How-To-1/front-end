@@ -8,7 +8,7 @@ transition: transform 0.2s ease-in;
 border-radius: 30px;
 background-size: contain;
 background-color: grey;
-color: #f5b942;
+color: lightskyblue;
 width: 40%;
 margin: 0 auto;
 align-content: center;
