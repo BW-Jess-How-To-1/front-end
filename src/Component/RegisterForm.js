@@ -1,6 +1,18 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import * as yup from 'yup';
+
+const formSchema = yup.object().shape({
+	username: yup
+		.string()
+        .max(15, '* Username must be 15 characters or less')
+        .min(2, "* Username must have more than 2 characters")
+		.required('* Username is required'),
+    password: yup.string()
+    .min(5, "* Password must be more than 5 characters long")
+    .required('* Password is required'),
+});
 
 const FormDiv = styled.form`
     display: flex;
@@ -23,18 +35,45 @@ const RegisterForm = () => {
 		password: '',
 	});
 
-    const handleChange = (e) => {
-		setFormState({
-			...formState,
-			[e.target.name]: e.target.value,
-		});
+    const validate = (e) => {
+		let value =
+			e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+		yup
+			.reach(formSchema, e.target.name)
+			.validate(value)
+			.then((valid) => {
+				setErrorState({
+					...errorState,
+					[e.target.name]: '',
+				});
+			})
+			.catch((err) => {
+				setErrorState({
+					...errorState,
+					[e.target.name]: err.errors[0],
+				});
+			});
+	};
+
+	const handleChange = (e) => {
+		e.persist();
+		validate(e);
+		let value =
+		  e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		setFormState({ ...formState, [e.target.name]: value });
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formState);
+		const config = {
+			headers: {
+				'Access-Control-Allow-Origin': 'https://how-to-1.netlify.app',
+				'credentials': 'true"
+				}
+			};
 		axios
-			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState)
+			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState, config)
 			.then((res) => {
                 console.log(res);
                 setFormState({username: '', password: ''})
@@ -58,6 +97,8 @@ const RegisterForm = () => {
                 onChange={handleChange}
             />
         </label>  
+        {errorState.username.length > 0 ? <p>{errorState.username}</p> : null}
+
         <label>Password:
             <input
                 type='password'
@@ -68,6 +109,8 @@ const RegisterForm = () => {
                 onChange={handleChange}
             />
         </label> 
+        {errorState.password.length > 0 ? <p>{errorState.password}</p> : null}
+
         <button className='submit' >Submit</button>
     </FormDiv>
     )

@@ -26,6 +26,12 @@ const Container = styled.div`
 
 export default function Tutorials({ setTutorials, tutorials }) {
 	useEffect(() => {
+// 		const config = {
+// 			headers: {
+// 				'Access-Control-Allow-Origin': '*',
+// 				'credentials': 'true"
+// 				}
+// 			};
 		axiosWithAuth()
 			.get('https://how-to-app-backend-api.herokuapp.com/api/tutorials')
 			.then((res) => {
@@ -47,6 +53,7 @@ export default function Tutorials({ setTutorials, tutorials }) {
 							materials={each.materials}
 							directions={each.directions}
 							likes={each.likes}
+							tutorials={tutorials}
 						/>
 					</Container>
 				);
