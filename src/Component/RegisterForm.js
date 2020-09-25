@@ -66,11 +66,11 @@ const RegisterForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formState);
-		const config = {
-			headers: {'Access-Control-Allow-Origin': '*'}
-			};
+// 		const config = {
+// 			headers: {'Access-Control-Allow-Origin': '*'}
+// 			};
 		axios
-			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState, config)
+			.post('https://how-to-app-backend-api.herokuapp.com/api/register', formState, {headers: {'Access-Control-Allow-Origin': '*'}})
 			.then((res) => {
                 console.log(res);
                 setFormState({username: '', password: ''})
