@@ -72,7 +72,7 @@ const RegisterForm = () => {
 		const config = {
 			headers: {
 				'Access-Control-Allow-Origin': 'https://how-to-1.netlify.app',
-				'credentials': 'true"
+				'credentials': 'true'
 				}
 			};
 		axios
