@@ -5,8 +5,8 @@ export default function () {
   return axios.create({
     headers: {
       'Authorization': 'token',
-//       'credentials': 'include',
-      'Access-Control-Allow-Origin': '*'
+      'credentials': 'include',
+      'Access-Control-Allow-Origin': 'https://how-to-1.netlify.app/'
     }
   })
 }
