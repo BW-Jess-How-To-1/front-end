@@ -69,7 +69,7 @@ const RegisterForm = () => {
 		const config = {
 			headers: {
 				'Access-Control-Allow-Origin': '*',
-				'credentials': 'true"
+// 				'credentials': 'true"
 				}
 			};
 		axios
