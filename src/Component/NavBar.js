@@ -10,9 +10,9 @@ const NavBar = () => {
             <NavLink exact to ='/tutorials' className='menu-links' activeClassName='active'>
               Tutorials
             </NavLink>
-            <a href="https://how-to-marketing.netlify.app/about" className='menu-links' activeClassName='active'>
+            <NavLink exact to='https://how-to-marketing.netlify.app/about' className='menu-links' activeClassName='active'>
               Team
-            </a>
+            </NavLink>
             <NavLink exact to='/login' className='menu-links' activeClassName='active'>
               Login
             </NavLink>
